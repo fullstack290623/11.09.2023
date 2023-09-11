@@ -6,7 +6,9 @@
 </head>
 <body>
     <hr>
-    <button onclick="button_click()">SEND AJAX to jsonplaceholder.typicode.com/users/1</button>
+    <p><button onclick="button_click()">SEND AJAX to jsonplaceholder.typicode.com/users/1</button></p>
+    <p>URL: <input type="text" id="url_txt"> <button onclick="ajax_click()">SEND AJAX</button></p>
+    <div id="result"></div>
     <script>
 
         // 1
@@ -20,29 +22,37 @@
         // 3
         // get the url from the user inside input type text
 
-        function button_click() {
-
+        function send_ajax(url) {
             // X H R 
             let req = new XMLHttpRequest();
 
-            req.open('GET', "https://jsonplaceholder.typicode.com/users/1");
+            req.open('GET', url);
 
             // call-back
             req.onload = function() {
                 // third -- 3
                 if (req.status == 200) {
-                    document.write(req.responseText);
+                    document.getElementById("result").innerHTML = req.responseText;
                 } else {
-                    document.write("Error: " + req.status);
+                    document.getElementById("result").innerHTML =  "Error: " + req.status;
                 }
             }
 
             // Asynchronize
             // second -- 2
             req.send();
-            
+
             // first -- 1
             console.log('hi');
+        }
+
+        function ajax_click() {
+            send_ajax(document.getElementById("url_txt").value)            
+        }
+
+
+        function button_click() {
+            send_ajax("https://jsonplaceholder.typicode.com/users/1");
         }
 
     </script>
