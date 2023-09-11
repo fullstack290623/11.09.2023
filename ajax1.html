@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax1</title>
+</head>
+<body>
+    <hr>
+    <button onclick="button_click()">SEND AJAX</button>
+    <script>
+
+        function button_click() {
+
+            // X H R 
+            let req = new XMLHttpRequest();
+
+            req.open('GET', "https://jsonplaceholder.typicode.com/users/1");
+
+            // call-back
+            req.onload = function() {
+                // third -- 3
+                if (req.status == 200) {
+                    document.write(req.responseText);
+                } else {
+                    document.write("Error: " + req.status);
+                }
+            }
+
+            // Asynchronize
+            // second -- 2
+            req.send();
+            
+            // first -- 1
+            console.log('hi');
+        }
+
+    </script>
+</body>
+</html>
