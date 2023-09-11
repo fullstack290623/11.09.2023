@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class more</title>
+</head>
+<body>
+    <script>
+
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            say_hello() {
+                console.log('hello');
+            } 
+            grow_in_one_year() {
+                // ?
+                //person_danny.age++
+                this.age++
+            }              
+            toString() {
+                return `Person [name: <b>${this.name}</b>] 
+                            [age: <b>${this.age}</b>]`
+            }         
+        }
+
+        const danny = new Person('danny', 25)
+        danny.grow_in_one_year()
+        const moshe = new Person('moshe', 26)
+        moshe.grow_in_one_year()
+
+        const person_danny = { 
+            name: 'danny',
+            age: 25,
+            say_hello() {
+                console.log('hello');
+            },
+            grow_in_one_year() {
+                person_danny.age++
+            }
+        }
+        const person_moshe = { 
+            name: 'moshe',
+            age: 26,
+            say_hello() {
+                console.log('hello');
+            },
+            grow_in_one_year() {
+                person_moshe.age++
+            }            
+        }
+
+        document.write(`${danny.toString()} <br />`)
+        document.write(`${moshe.toString()} <br />`)
+
+    </script>
+
+</body>
+</html>
